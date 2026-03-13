@@ -98,7 +98,12 @@ vim.g.have_nerd_font = true
 -- NOTE: You can change these options as you wish!
 --  For more options, you can see `:help option-list`
 
-vim.opt.colorcolumn = "101,121"
+vim.opt.colorcolumn = '101,121'
+vim.opt.tabstop = 4
+vim.opt.shiftwidth = 4
+vim.opt.softtabstop = 4
+vim.opt.expandtab = true
+
 -- Make line numbers default
 vim.o.number = true
 -- You can also add relative line numbers, to help with jumping.
@@ -248,8 +253,7 @@ rtp:prepend(lazypath)
 -- NOTE: Here is where you install your plugins.
 require('lazy').setup({
   -- NOTE: Plugins can be added with a link (or for a github repo: 'owner/repo' link).
-  'NMAC427/guess-indent.nvim', -- Detect tabstop and shiftwidth automatically
-
+  'NMAC427/guess-indent.nvim',
   -- NOTE: Plugins can also be added by using a table,
   -- with the first argument being the link and the following
   -- keys can be used to configure plugin behavior/loading/etc.
@@ -672,10 +676,10 @@ require('lazy').setup({
       --  - settings (table): Override the default settings passed when initializing the server.
       --        For example, to see the options for `lua_ls`, you could go to: https://luals.github.io/wiki/settings/
       local servers = {
-        -- clangd = {},
+        clangd = {},
         -- gopls = {},
         -- pyright = {},
-	basedpyright = {},
+        basedpyright = {},
         -- rust_analyzer = {},
         -- ... etc. See `:help lspconfig-all` for a list of all the pre-configured LSPs
         --
@@ -890,8 +894,8 @@ require('lazy').setup({
       require('dracula').setup {
         styles = {
           transparent_bg = true,
-	  italic_comment = false,
-	  lualine_bg_color = '#44475a',
+          italic_comment = false,
+          lualine_bg_color = '#44475a',
         },
       }
 
@@ -921,7 +925,7 @@ require('lazy').setup({
       -- - saiw) - [S]urround [A]dd [I]nner [W]ord [)]Paren
       -- - sd'   - [S]urround [D]elete [']quotes
       -- - sr)'  - [S]urround [R]eplace [)] [']
-      require('mini.surround').setup()
+      -- require('mini.surround').setup()
 
       -- Simple and easy statusline.
       --  You could remove this setup call if you don't like it,
@@ -969,14 +973,14 @@ require('lazy').setup({
   },
   {
     'nvim-tree/nvim-tree.lua',
-      dependencies = {
-	'nvim-tree/nvim-web-devicons',
-      },
-      config = function()
-        require('nvim-tree').setup {}
-	vim.keymap.set('n', '<leader>e', ':NvimTreeToggle<CR>', { silent = true })
-      end,
-},
+    dependencies = {
+      'nvim-tree/nvim-web-devicons',
+    },
+    config = function()
+      require('nvim-tree').setup {}
+      vim.keymap.set('n', '<leader>e', ':NvimTreeToggle<CR>', { silent = true })
+    end,
+  },
 
   -- The following comments only work if you have downloaded the kickstart repo, not just copy pasted the
   -- init.lua. If you want these files, they are in the repository, so you can just download them and
